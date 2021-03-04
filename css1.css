@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.htitle {
+    padding: 20px 3%;
+    margin: 20px 3%;
+    border-radius: 10px;
+    background-color: rgba(00, 0, 0, 0.5);
+    color: white;
+}
+.title {
+    padding: 20px 5%;
+    background-color: rgba(00, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
+
+form {
+    padding: 20px 5%;
+    margin: 20px 5%;
+    border-radius: 10px;
+    background-color: rgba(00, 0, 0, 0.5);
+}
+
+form>div>label {
+    color: white;
+}
+
+.form-control:focus {
+    color: white;
+    background-color: rgba(00, 00, 00, 0.8)
+}
+
+.result {
+    color: white;
+    background-color: black;
+    font-size: 25px;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+}
+
+footer{
+    text-align: center;
+    color: white;
+    padding: 20px 2%;
+    background-color: rgba(00, 0, 0, 0.7);
+}
+@media(max-width:768px) {
+    body {
+        background-image: url('bg1.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+
+}
+
+/* animation */
+/* animation */
+.an1, .an2, .an3, .an4, .an401, .an402, .an5, .an501, .an502, .an503, .an504, .an505, .an6, .an601, .an602, .an603, .an604, .an605, .an7, .an8, .an9, .an701, .an801, .an901, .an702, .an802, .an902, .an10{
+    opacity: 0;
+}
+ .an1.animated, .an2.animated, .an3.animated, .an4.animated, .an401.animated, .an402.animated, .an5.animated, .an501.animated, .an502.animated, .an503.animated, .an504.animated, .an505.animated, .an6.animated, .an601.animated, .an602.animated, .an603.animated, .an604.animated, .an605.animated, .an7.animated, .an8.animated, .an9.animated, .an701.animated, .an801.animated, .an901.animated, .an702.animated, .an802.animated, .an902.animated, .an10.animated{
+    opacity: 1;
+ }
