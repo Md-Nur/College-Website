@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@500&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Atma', cursive;
 }
 
 
 body {
-    background-image: url('bg.jpg');
+    background-image: url('../img/bg.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -143,7 +145,7 @@ footer {
 
 @media(max-width:768px) {
     body {
-        background-image: url('bg1.jpg');
+        background-image: url('../img/bg1.jpg');
         background-attachment: fixed;
         background-position: center;
         background-size: cover;

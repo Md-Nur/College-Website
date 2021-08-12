@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="img\icon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <!-- My Css -->
-    <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="style/css1.css">
     <style>
         /* animation */
         .an1,
@@ -83,7 +83,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="icon.png" width="50" height="50" alt="Admin Panel" loading="lazy">
+            <img src="img\icon.png" width="50" height="50" alt="Admin Panel" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -139,18 +139,16 @@
     <h2 class="title an5" id="show">Show data</h2><br>
 
     <?php
+    require "_db.php";
     if (isset($_REQUEST['s0'])) {
         $rr0 = $_REQUEST['rr0'];
-
-        $dbc0 = mysqli_connect('localhost', 'root', '', 'college');
-
-        if ($dbc0 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q0 = "SELECT * FROM `club info` WHERE `Roll` = $rr0";
 
-        $r0 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q0);
+        $r0 = mysqli_query($conn, $q0);
 
 
 
@@ -229,15 +227,13 @@
         $iv08 = $_REQUEST['iv08'];
         $it08 = $_REQUEST['it08'];
 
-        $c08 = mysqli_connect('localhost', 'root', '', 'college');
-
-        if ($c08 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q08 = "INSERT INTO `all_notice` (`title`, `time`, `body`) VALUES ('$iv08', current_timestamp(), '$it08')";
 
-        $r08 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q08);
+        $r08 = mysqli_query($conn, $q08);
 
         if ($r08 = true) {
             echo '<p class="result">';
@@ -271,15 +267,13 @@
     if (isset($_REQUEST['s01'])) {
         $iv01 = $_REQUEST['iv01'];
 
-        $c01 = mysqli_connect('localhost', 'root', '', 'college');
-
-        if ($c01 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q01 = "DELETE FROM `all_notice` WHERE `all_notice`.`time` = '$iv01'";
 
-        $r01 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q01);
+        $r01 = mysqli_query($conn, $q01);
 
         if ($r01 = true) {
             echo '<p class="result">';
@@ -316,19 +310,13 @@
     if (isset($_REQUEST['s1'])) {
         $input = $_REQUEST['l1'];
 
-        //Data base connection
-        $c1 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c1 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q1 = "INSERT INTO `youtube videos`(`Link`) VALUES ('$input')";
 
-        //database
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q1); //database
-        //database
+        $r1 = mysqli_query($conn, $q1);
 
         if ($r1 = true) {
             echo '<p class="result">';
@@ -361,11 +349,7 @@
     if (isset($_REQUEST['s2'])) {
         $input = $_REQUEST['l2'];
 
-        //Data base connection
-        $dbc1 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($dbc1 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
@@ -373,7 +357,7 @@
 
         //database
 
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q1); //database
+        $r1 = mysqli_query($conn, $q1); //database
 
         //database
 
@@ -408,19 +392,11 @@
     if (isset($_REQUEST['s3'])) {
         $input = $_REQUEST['l3'];
 
-        //Data base connection
-        $c3 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c3 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
-
         $q3 = "INSERT INTO `Club`( `S&C`) VALUES ('$input')";
-
-        //database
-        $r3 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q3); //database
-        //database
+        $r3 = mysqli_query($conn, $q3);
 
         if ($r3 = true) {
             echo '<p class="result">';
@@ -453,21 +429,12 @@
     if (isset($_REQUEST['s4'])) {
         $input = $_REQUEST['l4'];
 
-        //Data base connection
-        $c4 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c4 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q4 = "DELETE FROM `Club` WHERE `S&C` = '$input'";
-
-        //database
-
-        $r4 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q4); //database
-
-        //database
+        $r4 = mysqli_query($conn, $q4); //database
 
         if ($r4 = true) {
             echo '<p class="result">';
@@ -501,21 +468,12 @@
         $input = $_REQUEST['l5'];
         $i5 = $_REQUEST['bth'];
 
-        //Data base connection
-        $c5 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c5 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q5 = "UPDATE `news` SET `Notice`='$input' WHERE batch = '$i5'";
-
-        //database
-
-        $r5 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q5); //database
-
-        //database
+        $r5 = mysqli_query($conn, $q5); //database
 
         if ($r5 = true) {
             echo '<p class="result">';
@@ -566,21 +524,12 @@
         $it = $_REQUEST['it6'];
         $i6 = $_REQUEST['bth'];
 
-        //Data base connection
-        $c6 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c6 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q6 = "UPDATE `news` SET `Exam`='$it' WHERE batch = '$i6'";
-
-        //database
-
-        $r6 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q6); //database
-
-        //database
+        $r6 = mysqli_query($conn, $q6); //database
 
         if ($r6 = true) {
             echo '<p class="result">';
@@ -626,21 +575,12 @@
         $it = $_REQUEST['it7'];
         $i7 = $_REQUEST['bth'];
 
-        //Data base connection
-        $c7 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($c7 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q7 = "UPDATE `news` SET `About`='$it' WHERE batch = '$i7'";
-
-        //database
-
-        $r7 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q7); //database
-
-        //database
+        $r7 = mysqli_query($conn, $q7); //database
 
         if ($r7 = true) {
             echo '<p class="result">';

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="..\img\icon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <!-- My css -->
-    <link rel="stylesheet" href="css2.css">
-    <title>HSC 2nd Year (Humanities)</title>
+    <link rel="stylesheet" href="../style/css2.css">
+    <title>HSC 2nd Year (Commerce)</title>
     <style>
         .header {
             display: flex;
@@ -25,7 +25,7 @@
             background-size: cover;
             color: white;
             background-position: center;
-            background-image: linear-gradient(-50deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('c6.jpg');
+            background-image: linear-gradient(-50deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('../img/college/c5.jpg');
             padding: 50px;
             text-align: right;
             font-family: algerian;
@@ -42,7 +42,7 @@
                 background-size: cover;
                 color: white;
                 background-position: center;
-                background-image: linear-gradient(-50deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('c5.jpg');
+                background-image: linear-gradient(-50deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('../img/college/c4.jpg');
                 padding: 25px;
                 text-align: right;
                 font-family: algerian;
@@ -56,7 +56,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="icon.png" width="50" height="50" alt="College Website" loading="lazy">
+            <img src="..\img\icon.png" width="50" height="50" alt="College Website" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -64,7 +64,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="../index.php">Home</a>
                 </li>
 
                 <li class="nav-item active dropdown">
@@ -72,6 +72,7 @@
                         Class</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" target="_blank" href="hsc_1st_year_science.php">HSC 1st Year (Science)</a>
+
                         <a class="dropdown-item" target="_blank" href="hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
                         <a class="dropdown-item" target="_blank" href="hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
                         <a class="dropdown-item" target="_blank" href="hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
@@ -82,15 +83,15 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="club.php">Clubs</a>
+                    <a class="nav-link" href="../club.php">Clubs</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="form.php">Club Registration</a>
+                    <a class="nav-link" href="../form.php">Club Registration</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="notice.php">Notice</a>
+                    <a class="nav-link" href="../notice.php">Notice</a>
                 </li>
 
 
@@ -112,26 +113,20 @@
 
     <div class="header" id="Home">
 
-        <div class="an10">HSC 2nd Year (Humanities)</div>
+        <div class="an10">HSC 2nd Year (Commerce)</div>
     </div>
     <div class="notice">
         <div class="ntc">Recent Notice:</div>
 
         <?php
-        //database
-        $dbcon = mysqli_connect('localhost', 'root', '', 'college'); //database
-        //database
-
-        if ($dbcon = false) {
+        require "../_db.php"; //database
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
-        $sw = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Humanities)'";
-
-        //database
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
-        //database
-
+        $sw = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Commerce)'";
+        $r1 = mysqli_query($conn, $sw);
         $c1 = mysqli_num_rows($r1);
+
         if ($c1 > 0) {
             while ($row = mysqli_fetch_row($r1)) {
         ?>
@@ -151,21 +146,13 @@
     <div class="option an5" id="reg">
         <h4>About This Class</h4>
         <?php
-
-        //database
-        $dbcon5 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        //database
-
-        if ($dbcon5 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
-        $sw5 = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Humanities)'";
-
-        //database
-        $r5 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw5); //database
-        //database
-
+        $sw5 = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Commerce)'";
+        $r5 = mysqli_query($conn, $sw5);
         $c5 = mysqli_num_rows($r5);
+
         if ($c5 > 0) {
             while ($row = mysqli_fetch_row($r5)) {
         ?>
@@ -187,27 +174,20 @@
     <div class="ytv">
         <?php
 
-        //database
-        $dbcon = mysqli_connect('localhost', 'root', '', 'college'); //database
-        //database
-
-        if ($dbcon  = false) {
+        if ($conn  == false) {
             echo 'Data base did not connected';
         }
-        $sw = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Humanities)'";
-
-        //database
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
-        //database
-
+        $sw = "SELECT * FROM `news` WHERE `Batch` = 'HSC 2nd Year (Commerce)'";
+        $r1 = mysqli_query($conn, $sw);
         $c1 = mysqli_num_rows($r1);
+
         if ($c1 > 0) {
             while ($row = mysqli_fetch_row($r1)) {
                 echo "{$row[2]}";
             }
         } else {
             echo 'You have no link in your database';
-        };
+        }
         ?>
     </div>
     <!--Exam-->
@@ -222,20 +202,13 @@
             <tbody>
 
                 <?php
-                //database
-                $data = mysqli_connect('localhost', 'root', '', 'college'); //database
-                //database
-
-                if ($data = false) {
+                if ($conn == false) {
                     echo 'Data base did not connected';
                 }
-                $show = "SELECT * FROM `z_hsc_2nd_year_humanities`";
-
-                //database
-                $r2 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $show); //database
-                //database
-
+                $show = "SELECT * FROM `z_hsc_2nd_year_commerce`";
+                $r2 = mysqli_query($conn, $show);
                 $c2 = mysqli_num_rows($r2);
+                
                 if ($c2 > 0) {
                     while ($row = mysqli_fetch_row($r2)) {
                 ?>

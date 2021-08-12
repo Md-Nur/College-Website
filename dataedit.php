@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="img\icon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -14,7 +14,7 @@
 
 
     <!-- My Css -->
-    <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="style/css1.css">
 
     <style>
 
@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="icon.png" width="50" height="50" alt="Edit/Show" loading="lazy">
+            <img src="img\icon.png" width="50" height="50" alt="Edit/Show" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,12 +43,12 @@
                     <a class="nav-link dropdown-toggle" href="#more" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Class</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_science.php">HSC 1st Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_humanities">HSC 2nd Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_science.php">HSC 1st Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_humanities">HSC 2nd Year (Humanities)</a>
                     </div>
                 </li>
                 <li class="nav-item active">
@@ -77,22 +77,20 @@
     </nav>
 
     <?php
+    require "_db.php"; //database
     if (isset($_REQUEST['s0'])) {
 
         $rr0 = $_REQUEST['rr0'];
         $pd0 = $_REQUEST['pd0'];
 
-        //Data base connection
-        $dbc0 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
 
-        if ($dbc0 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
         $q0 = "SELECT * FROM `club info` WHERE `Roll` = $rr0 AND `Password` = '$pd0'";
 
-        $r0 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q0);
+        $r0 = mysqli_query($conn, $q0);
 
 
 
@@ -193,20 +191,13 @@
             $sc = $sc . $new . ", ";
         }
 
-
-
-        //Data base connection
-        $dbc1 = mysqli_connect('localhost', 'root', '', 'college'); //database
-        // data base connection
-
-        if ($dbc1 = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
 
-
         $q3 = "SELECT * FROM `club info` WHERE `Roll` = $rr1 AND `Password` = '$pd1'";
 
-        $r3 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q3);
+        $r3 = mysqli_query($conn, $q3);
 
         echo "<h1 class='htitle'>";
 
@@ -216,7 +207,7 @@
 
             $q4 = "UPDATE `club info` SET `Full Name`='$nm', `Phone` = '$pn', `Email` = '$el', `password` = '$psd', `Club` ='$sc', `Batch` = '$bth', `Gender` = '$gr' WHERE `club info`.`Roll` = $rr1";
 
-            $r4 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $q4);
+            $r4 = mysqli_query($conn, $q4);
 
             echo "Your data was update successfully";
         } else {
@@ -288,20 +279,13 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Club Name </label> <br>
             <?php
-            //database
-            $con = mysqli_connect('localhost', 'root', '', 'college'); //database
-            //database
-
-            if ($con = false) {
+            if ($conn == false) {
                 echo 'Data base did not connected';
             }
             $sw = "SELECT * FROM `club` ORDER BY `club`.`S&C` ASC";
-
-            //database
-            $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
-            //database
-
+            $r1 = mysqli_query($conn, $sw);
             $c1 = mysqli_num_rows($r1);
+
             if ($c1 > 0) {
                 while ($row = mysqli_fetch_row($r1)) {
             ?>

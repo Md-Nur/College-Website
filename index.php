@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="img\icon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <!-- My css -->
-    <link rel="stylesheet" href="css2.css">
+    <link rel="stylesheet" href="style/css2.css">
 
     <title>College Website</title>
 
@@ -27,7 +27,7 @@
             background-size: cover;
             color: white;
             background-position: center;
-            background-image: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('c0.jpg');
+            background-image: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('img/college/c0.jpg');
             padding: 50px;
             text-align: center;
             font-family: algerian;
@@ -82,7 +82,7 @@
                 background-size: cover;
                 color: white;
                 background-position: center;
-                background-image: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('c8.jpg');
+                background-image: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('img/college/c8.jpg');
                 padding: 25px;
                 text-align: center;
                 font-family: algerian;
@@ -109,7 +109,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="icon.png" width="50" height="50" alt="College Website" loading="lazy">
+            <img src="img\icon.png" width="50" height="50" alt="College Website" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -121,15 +121,15 @@
                 </li>
 
                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#more" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Class</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_science.php">HSC 1st Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_humanities.php">HSC 2nd Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_science.php">HSC 1st Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_humanities.php">HSC 2nd Year (Humanities)</a>
                     </div>
                 </li>
 
@@ -174,20 +174,16 @@
     <div class="notice">
         <div class="ntc">Recent Notice:</div>
         <?php
-        //database
-        $dbcon = mysqli_connect('localhost', 'root', '', 'college'); //database
-        //database
+        require "_db.php"; //database
 
-        if ($dbcon = false) {
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
+
         $sw = "SELECT * FROM `news` WHERE `Batch` = 'Home'";
-
-        //database
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
-        //database
-
+        $r1 = mysqli_query($conn, $sw);
         $c1 = mysqli_num_rows($r1);
+
         if ($c1 > 0) {
             while ($row = mysqli_fetch_row($r1)) {
         ?>
@@ -208,12 +204,12 @@
         <h2 style="text-align: center;"><u>About Our College</u></h2>
         <hr>
         <?php
-        $dbcon5 = mysqli_connect('localhost', 'root', '', 'college');
-        if ($dbcon5 = false) {
+
+        if ($conn == false) {
             echo 'Data base did not connected';
         }
         $sw5 = "SELECT * FROM `news` WHERE `Batch` = 'Home'";
-        $r5 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw5);
+        $r5 = mysqli_query($conn, $sw5);
         $c5 = mysqli_num_rows($r5);
         if ($c5 > 0) {
             while ($row = mysqli_fetch_row($r5)) {
@@ -240,17 +236,13 @@
 
         <?php
 
-        //database
-        $dbcon = mysqli_connect('localhost', 'root', '', 'college'); //database
-        //database
-
-        if ($dbcon  = false) {
+        if ($conn  == false) {
             echo 'Data base did not connected';
         }
         $sw = "SELECT * FROM `youtube videos` ORDER BY `youtube videos`.`Serial` DESC";
 
         //database
-        $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
+        $r1 = mysqli_query($conn, $sw); //database
         //database
 
         $c1 = mysqli_num_rows($r1);
@@ -272,7 +264,7 @@
     <div class="card mb-3 hc an6" id="spc">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="sir.jpg" class="card-img an7" alt="Principal">
+                <img src="img/sir/sir.jpg" class="card-img an7" alt="Principal">
             </div>
             <div class="col-md-8">
                 <div class="card-body an8">
@@ -295,42 +287,42 @@
     <br>
     <div class="ytx">
         <div class="et an401">
-            <img class="det" src="sir.jpg" alt="sir">
+            <img class="det" src="img/sir/sir.jpg" alt="img/sir/sir">
             <br>
             Animesh Roy (Principal)
         </div>
         <div class="et an901">
-            <img class="det" src="sir1.jpg" alt="sir">
+            <img class="det" src="img/sir/sir1.jpg" alt="img/sir/sir">
             <br>
             Showkat Kabir
         </div>
         <div class="et an604">
-            <img class="det" src="sir2.jpg" alt="sir">
+            <img class="det" src="img/sir/sir2.jpg" alt="img/sir/sir">
             <br>
             Tamanna Tabassum
         </div>
         <div class="et an802">
-            <img class="det" src="sir3.jpg" alt="sir">
+            <img class="det" src="img/sir/sir3.jpg" alt="img/sir/sir">
             <br>
             Samiya Tasnim
         </div>
         <div class="et an702">
-            <img class="det" src="sir4.jpg" alt="sir">
+            <img class="det" src="img/sir/sir4.jpg" alt="img/sir/sir">
             <br>
             Apurbo Bishwas
         </div>
         <div class="et 601">
-            <img class="det" src="sir5.jpg" alt="sir">
+            <img class="det" src="img/sir/sir5.jpg" alt="img/sir/sir">
             <br>
             Shantona Jannat
         </div>
         <div class="et an402">
-            <img class="det" src="sir6.jpg" alt="sir">
+            <img class="det" src="img/sir/sir6.jpg" alt="img/sir/sir">
             <br>
             Shamima Nasrin
         </div>
         <div class="et an902">
-            <img class="det" src="sir7.jpg" alt="sir">
+            <img class="det" src="img/sir/sir7.jpg" alt="img/sir/sir">
             <br>
             Mohammad Nur
         </div>

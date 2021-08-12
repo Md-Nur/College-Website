@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="img\icon.png">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <!-- My Css -->
-    <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="style/css1.css">
 
     <style>
         .dt {
@@ -31,7 +31,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="icon.png" width="50" height="50" alt="Notice" loading="lazy">
+            <img src="img\icon.png" width="50" height="50" alt="Notice" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,12 +46,12 @@
                     <a class="nav-link dropdown-toggle" href="#more" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Class</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_science.php">HSC 1st Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
-                        <a class="dropdown-item" target="_blank" href="hsc_2nd_year_humanities.php">HSC 2nd Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_science.php">HSC 1st Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_commerce.php">HSC 1st Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_1st_year_humanities.php">HSC 1st Year (Humanities)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_science.php">HSC 2nd Year (Science)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_commerce.php">HSC 2nd Year (Commerce)</a>
+                        <a class="dropdown-item" target="_blank" href="class/hsc_2nd_year_humanities.php">HSC 2nd Year (Humanities)</a>
                     </div>
                 </li>
 
@@ -73,20 +73,15 @@
 
     <h1 class="title" id="tap">Notice</h1>
     <?php
-    //database
-    $dbcon = mysqli_connect('localhost', 'root', '', 'college'); //database
-    //database
+    require "_db.php";  //database
 
-    if ($dbcon = false) {
+    if ($conn == false) {
         echo 'Data base did not connected';
     }
     $sw = "SELECT * FROM `all_notice` ORDER BY `all_notice`.`time` DESC";
-
-    //database
-    $r1 = mysqli_query(mysqli_connect('localhost', 'root', '', 'college'), $sw); //database
-    //database
-
+    $r1 = mysqli_query($conn, $sw); //database
     $c1 = mysqli_num_rows($r1);
+
     if ($c1 > 0) {
         while ($row = mysqli_fetch_row($r1)) {
     ?>
